@@ -1,0 +1,4 @@
+services:
+   ingest:
+    volumes:
+      - .:/workspaces/data-eng
