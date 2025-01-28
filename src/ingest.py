@@ -24,4 +24,5 @@ def ingest_zones():
 
 
 if __name__ == "__main__":
+    ingest()
     ingest_zones()
