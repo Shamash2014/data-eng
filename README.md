@@ -89,3 +89,13 @@ ORDER BY total_amount DESC
 limit 10
 
 ```
+
+# Kestra
+
+To run the container you could use `docker compose up -d`,
+once database is running  - connect through `psql -h localhost -p 5432 -U postgres -d postgres` and run the query to create new database `kestra`: `CREATE DATABASE kestra;`
+
+Than re-run docker compose again. Kestra should be working
+
+Once kestra is running, please add three flows inside UI and run `kv` flow and gcp flow. After that noral backfill is possible
+
