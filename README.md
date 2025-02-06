@@ -99,3 +99,14 @@ Than re-run docker compose again. Kestra should be working
 
 Once kestra is running, please add three flows inside UI and run `kv` flow and gcp flow. After that noral backfill is possible
 
+
+## BigQuery queries
+
+```sql
+SELECT count(*) FROM `terminus-401307.zoomcamp.yellow_tripdata` WHERE TIMESTAMP_TRUNC(tpep_pickup_datetime, DAY) > TIMESTAMP("2020-01-01") and TIMESTAMP_TRUNC(tpep_dropoff_datetime, DAY) < TIMESTAMP("2020-12-31")
+```
+
+
+```sql
+SELECT count(*) FROM `terminus-401307.zoomcamp.green_tripdata` WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) > TIMESTAMP("2020-01-01") and TIMESTAMP_TRUNC(lpep_dropoff_datetime, DAY) < TIMESTAMP("2020-12-31")
+```
