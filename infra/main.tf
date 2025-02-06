@@ -17,5 +17,4 @@ resource "google_bigquery_dataset" "data-warehouse" {
   location      = var.location
   friendly_name = "data-war"
   description   = "This is a test description"
-
 }
