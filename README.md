@@ -110,3 +110,48 @@ SELECT count(*) FROM `terminus-401307.zoomcamp.yellow_tripdata` WHERE TIMESTAMP_
 ```sql
 SELECT count(*) FROM `terminus-401307.zoomcamp.green_tripdata` WHERE TIMESTAMP_TRUNC(lpep_pickup_datetime, DAY) > TIMESTAMP("2020-01-01") and TIMESTAMP_TRUNC(lpep_dropoff_datetime, DAY) < TIMESTAMP("2020-12-31")
 ```
+
+
+
+# Bigquery
+
+
+```sql
+SELECT count(*)  FROM `terminus-401307.yellow_taxi.yellow_taxi_trips` 
+```
+
+
+```sql
+SELECT count(distinct PULocationID)  FROM `terminus-401307.yellow_taxi.yellow_taxi_trips`
+```
+
+```sql
+SELECT PULocationID  FROM `terminus-401307.yellow_taxi.yellow_taxi_trips`
+```
+
+```sql
+SELECT  count(*) FROM `terminus-401307.yellow_taxi.yellow_taxi_trips` where fare_amount = 0
+```
+
+```sql
+CREATE OR REPLACE TABLE `terminus-401307.yellow_taxi.optimized_table`
+PARTITION BY DATE(tpep_dropoff_datetime)  
+CLUSTER BY VendorID AS  
+SELECT * FROM `terminus-401307.yellow_taxi.yellow_taxi_trips`
+```
+
+```sql
+SELECT DISTINCT VendorID  
+FROM `terminus-401307.yellow_taxi.optimized_table`
+WHERE tpep_dropoff_datetime BETWEEN '2024-03-01' AND '2024-03-15';
+```
+
+
+```sql
+CREATE OR REPLACE TABLE `terminus-401307.yellow_taxi.optimized_table`
+PARTITION BY DATE(tpep_dropoff_datetime)  
+CLUSTER BY VendorID AS  
+SELECT * FROM `terminus-401307.yellow_taxi.yellow_taxi_trips`
+```
+
+
